@@ -3,15 +3,31 @@ import h3d.scene.Mesh;
 
 class TestApp extends hxd.App {
 
-    override function init () : Void {        
-        var model = hxd.Res.rlauncher.toHmd ();  
-        var object = model.makeObject ();
+    /**
+     *  Scene object
+     */
+    var object : h3d.scene.Object;
+
+    /**
+     *  Rotate angle
+     */
+    var angle : Float;
+
+    /**
+     *  On game init
+     */
+    override function init () : Void {
+        angle = 0;
+        var model = hxd.Res.milktank_fbx.toHmd ();
+        object = model.makeObject ();
+
+        var texture = hxd.Res.milktank_png.toTexture ();
         //var model = hxd.Res.charWorkingFbx.toHmd ();
         //var object = model.makeObject ();
-        object.scale (0.5);        
+        object.scale (0.008);        
 
-        for (m in object.getMaterials ()) {
-            m.color.setColor (0xAAAAAA);
+        for (m in object.getMaterials ()) {            
+            m.texture = texture;
             m.mainPass.enableLights = true;
         }
 
@@ -44,6 +60,11 @@ class TestApp extends hxd.App {
         new h3d.scene.CameraController (5, s3d).loadFromCamera ();
     }
 
-    override function update (dt : Float) {        
+    override function update (dt : Float) {
+        angle += 1;
+        object.rotate (1 * 3.14 / 180, 0, 0);
+
+        if (angle > 360) angle = 0;
+
     }
 }
