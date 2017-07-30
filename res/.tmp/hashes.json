@@ -1,6 +1,17 @@
 {
 	"": {
 		"home": {
+			"ata": {
+				"Workspace": {
+					"TestHmdImport": {
+						"res": {
+							".tmp": {
+								"milktank_fbx.fbx": "0e1c777b0ae3122ef3fed6e9b35b5bf7c0205f04"
+							}
+						}
+					}
+				}
+			},
 			"grabli66": {
 				"Workspace": {
 					"TestHmdImport": {

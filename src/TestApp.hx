@@ -18,32 +18,33 @@ class TestApp extends hxd.App {
      */
     override function init () : Void {
         angle = 0;
-        var model = hxd.Res.milktank_fbx.toHmd ();
+        var model = hxd.Res.milktank.toHmd ();
         object = model.makeObject ();
 
-        var texture = hxd.Res.milktank_png.toTexture ();
+        var texture = hxd.Res.milktank_tex.toTexture ();
         //var model = hxd.Res.charWorkingFbx.toHmd ();
         //var object = model.makeObject ();
-        object.scale (0.008);        
 
         for (m in object.getMaterials ()) {            
             m.texture = texture;
             m.mainPass.enableLights = true;
         }
 
+        object.scale (0.8);
+
         var prim = new h3d.prim.Cube();
 
 		// translate it so its center will be at the center of the cube
-		prim.translate( -0.5, -0.5, -0.5);
+		//prim.translate( -0.5, -0.5, -0.5);
 
 		// unindex the faces to create hard edges normals
-		prim.unindex();
+		//prim.unindex();
 
 		// add face normals
-		prim.addNormals();
+		//prim.addNormals();
 
 		// add texture coordinates
-		prim.addUVs();
+		//prim.addUVs();
 
         //var obj1 = new Mesh(prim, s3d);
         
@@ -62,7 +63,7 @@ class TestApp extends hxd.App {
 
     override function update (dt : Float) {
         angle += 1;
-        object.rotate (1 * 3.14 / 180, 0, 0);
+        //object.rotate (1 * 3.14 / 180, 0, 0);
 
         if (angle > 360) angle = 0;
 
