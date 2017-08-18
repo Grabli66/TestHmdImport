@@ -18,21 +18,24 @@ class TestApp extends hxd.App {
      */
     override function init () : Void {
         angle = 0;
-        var model = hxd.Res.milktank.toHmd ();
+        var model = hxd.Res.skel.toHmd ();        
         object = model.makeObject ();
 
-        var texture = hxd.Res.milktank_tex.toTexture ();
+        //var texture = hxd.Res.milktank_tex.toTexture ();
         //var model = hxd.Res.charWorkingFbx.toHmd ();
         //var object = model.makeObject ();
 
         for (m in object.getMaterials ()) {            
-            m.texture = texture;
+            //m.texture = texture;
             m.mainPass.enableLights = true;
         }
 
-        object.scale (0.8);
+        object.scale (0.08);
 
-        var prim = new h3d.prim.Cube();
+        //var prim = new h3d.prim.Cube();
+
+        var anim = model.loadAnimation ();
+        object.playAnimation (anim);
 
 		// translate it so its center will be at the center of the cube
 		//prim.translate( -0.5, -0.5, -0.5);
